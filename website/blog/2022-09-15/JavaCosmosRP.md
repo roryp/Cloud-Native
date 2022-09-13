@@ -55,17 +55,17 @@ If you're a Java developer new to serverless on Azure, start by exploring the [A
  * Adopting [best practices](https://docs.microsoft.com/en-us/azure/azure-functions/functions-best-practices?tabs=java) for hosting, reliability and efficiency.
  * Java [code samples](https://docs.microsoft.com/en-us/samples/azure-samples/azure-functions-samples-java/azure-functions-java/) and [integration tutorials](https://docs.microsoft.com/en-us/azure/azure-functions/functions-event-hub-cosmos-db?tabs=bash)
 
-In this blog post, we'll dive into one quickstart, and discuss other resources briefly, for awareness! Do check out the recommended exercises and resources for self-study!
+In this blog post, we'll dive into one quickstart and briefly discuss other resources for awareness! Do check out the recommended exercises and resources for self-study!
 
 ---
 
 ## Create a function in Java with an Event Hub trigger and an Azure Cosmos DB output binding
 
-In today's post, we'll walk through the [Quickstart: Azure Functions](https://docs.microsoft.com/en-gb/azure/azure-functions/functions-event-hub-cosmos-db?tabs=bash) tutorial using the [Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools). In the process, we'll setup our development environment with the relevant command-line tools to make building Function apps simpler.
+Today's post will walk through the [Quickstart: Azure Functions](https://docs.microsoft.com/en-gb/azure/azure-functions/functions-event-hub-cosmos-db?tabs=bash) tutorial using the [Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools). In the process, we'll set up our development environment with the relevant command-line tools to make building Function apps simpler.
 
-_Note: Completing this exercise may incur a a cost of a few USD cents based on your Azure subscription. Explore [pricing details](https://azure.microsoft.com/en-us/pricing/details/functions/#pricing) to learn more_.
+_Note: Completing this exercise may incur a cost of a few USD cents based on your Azure subscription. Explore [pricing details](https://azure.microsoft.com/en-us/pricing/details/functions/#pricing) to learn more_.
 
-First, make sure you have your development environment setup and configured.
+First, make sure you have your development environment set up and configured.
 
 :::info PRE-REQUISITES
 
@@ -77,7 +77,7 @@ First, make sure you have your development environment setup and configured.
 
 ### 1. Setup your environmental variables
 
-First we need to setup some environment variables for the names and location of the resources you'll create. Use the following commands, replacing the <value> placeholders with values of your choosing. For the LOCATION variable, use one of the values produced by the ```az functionapp list-consumption-locations``` command.
+First, we need to set up some environment variables for the names and location of the resources you'll create. Use the following commands, replacing the <value> placeholders with values of your choosing. For the LOCATION variable, use one of the values produced by the ```az functionapp list-consumption-locations``` command.
 
 ```bash
 RESOURCE_GROUP=<value>
@@ -100,7 +100,7 @@ az group create \
     --location $LOCATION
 ```
 
-The Event Hubs namespace contains the actual event hub and its authorization rule. The authorization rule enables your functions to send messages to the hub and listen for the corresponding events. One function sends messages that represent telemetry data. Another function listens for events, analyzes the event data, and stores the results in Azure Cosmos DB.
+The Event Hubs namespace contains the actual event hub and its authorization rule. The authorization rule enables your functions to send messages to the hub and listen for the related events. One function sends messages that represent telemetry data. Another function listens for events, analyzes the event data, and stores the results in Azure Cosmos DB.
 Next, create an Azure Event Hubs namespace, event hub, and authorization rule using the following commands:
 
 ```bash
@@ -156,7 +156,7 @@ az functionapp create \
 
 ### 3. Configure your function app
 
-Your function app will need to access the other resources to work correctly. The following sections show you how to configure your function app so that it can run on your local machine.
+Your function app will need to access the other resources to work correctly. The following sections show you how to configure your function app to run on your local machine.
 
 Use the following commands to retrieve the storage, event hub, and Cosmos DB connection strings and save them in environment variables:
 
@@ -233,7 +233,7 @@ rm -r src/test
 
 ### 4.1 Retrieve your function app settings for local use
 
-For local testing, your function project will need the connection strings that you added to your function app in Azure earlier in this tutorial. Use the following Azure Functions Core Tools command, which retrieves all the function app settings stored in the cloud and adds them to your local.settings.json file:
+For local testing, your function project will need the connection strings you added to your function app in Azure earlier in this tutorial. Use the following Azure Functions Core Tools command, which retrieves all the function app settings stored in the cloud and adds them to your local.settings.json file:
 
 ```bash
 func azure functionapp fetch-app-settings $FUNCTION_APP
@@ -416,9 +416,9 @@ Deploy your project to Azure using the following command:
 mvn azure-functions:deploy
 ```
 
-Your functions now run in Azure, and continue to accumulate data in your Azure Cosmos DB.
-When the ```az functionapp create``` command created your function app, it also created an Application Insights resource with the same name. The function app is automatically configured with a setting named ```APPINSIGHTS_INSTRUMENTATIONKEY``` that connects it to Application Insights.
-You can view your deployed function app in the Azure portal, and view app telemetry through the connected Application Insights resource, as shown in the following screenshots:
+Your functions now run in Azure, and continue accumulating data in your Azure Cosmos DB.
+When the ```az functionapp create``` command created your function app, it also created an Application Insights resource with the same name.
+In the [Azure portal](https://portal.azure.com/), you can view your app's telemetry through the connected Application Insights resource, as shown in the following screenshots:
 
 **Live Metrics Stream:**
 :::image type="content" source="./img/java/application-insights-live-metrics-stream.png" alt-text="application insights live metrics":::
@@ -440,7 +440,7 @@ So, where can you go from here? The example above used a familiar `HTTP Trigger`
 
 ### Other Triggers, Bindings
 
-Check out [Azure Functions Java developer guide](https://docs.microsoft.com/en-gb/azure/azure-functions/functions-reference-java) detailed information to help you succeed developing Azure Functions using Java.
+Check out [Azure Functions Java developer guide](https://docs.microsoft.com/en-gb/azure/azure-functions/functions-reference-java) for detailed information to help you succeed in developing Azure Functions using Java.
 
 ### Scenario with Integrations
 
