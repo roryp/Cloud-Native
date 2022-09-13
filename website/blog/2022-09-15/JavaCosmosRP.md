@@ -241,7 +241,7 @@ func azure functionapp fetch-app-settings $FUNCTION_APP
 
 #### 4.2 Add Java code
 
-Next, open the _Function.java_ file and replace the contents with the following code.
+Next, open the _Function.java_ file in an editor of your choice and replace the contents with the following code:
 
 ```java
 package com.example;
